@@ -1,8 +1,6 @@
 package org.eternity.script.movie.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -15,6 +13,7 @@ public class DiscountPolicy {
     @GeneratedValue(generator = "discount_seq")
     private Long id;
     private Long movieId;
+    @Enumerated(EnumType.STRING) @Column(columnDefinition = "varchar(20)")
     private PolicyType policyType;
     private Long amount;
     private Double percent;

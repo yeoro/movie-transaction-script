@@ -3,9 +3,6 @@ package org.eternity.script.movie.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.DayOfWeek;
-import java.time.LocalTime;
-
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED) @AllArgsConstructor
 @Getter @Setter
@@ -20,18 +17,15 @@ public class DiscountCondition {
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "varchar(20)")
     private ConditionType conditionType;
-    private DayOfWeek dayOfWeek;
 
-    private LocalTime startTime;
-    private LocalTime endTime;
+    private PlayTime playTime;
+
     private Integer sequence;
 
-    public DiscountCondition(Long policyId, ConditionType conditionType, DayOfWeek dayOfWeek, LocalTime startTime, LocalTime endTime, Integer sequence) {
+    public DiscountCondition(Long policyId, ConditionType conditionType, PlayTime playTime, Integer sequence) {
         this.policyId = policyId;
         this.conditionType = conditionType;
-        this.dayOfWeek = dayOfWeek;
-        this.startTime = startTime;
-        this.endTime = endTime;
+        this.playTime = playTime;
         this.sequence = sequence;
     }
     public boolean isPeriodCondition() {

@@ -6,9 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
-import java.time.DayOfWeek;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED) @AllArgsConstructor
@@ -28,9 +26,9 @@ public class Screening {
         this.screeningTime = screeningTime;
     }
 
-    public boolean isPlayedIn(DayOfWeek dayOfWeek, LocalTime startTime, LocalTime endTime) {
-        return this.screeningTime.getDayOfWeek().equals(dayOfWeek) &&
-                (this.screeningTime.toLocalTime().equals(startTime) || this.screeningTime.toLocalTime().isAfter(startTime)) &&
-                (this.screeningTime.toLocalTime().equals(endTime) || this.screeningTime.toLocalTime().isBefore(endTime));
+    public boolean isPlayedIn(PlayTime playTime) {
+        return this.screeningTime.getDayOfWeek().equals(playTime.getDayOfWeek()) &&
+                (this.screeningTime.toLocalTime().equals(playTime.getInterval().getStartTime()) || this.screeningTime.toLocalTime().isAfter(playTime.getInterval().getStartTime())) &&
+                (this.screeningTime.toLocalTime().equals(playTime.getInterval().getEndTime()) || this.screeningTime.toLocalTime().isBefore(playTime.getInterval().getEndTime()));
     }
 }

@@ -1,9 +1,6 @@
 package org.eternity.script.movie.jpa;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,7 +11,6 @@ public class JpaInitTest {
     @Test
     @DisplayName("JPA 엔티티 정상적으로 생성되는지 확인")
     public void initializeEntity() {
-
     }
 }
 

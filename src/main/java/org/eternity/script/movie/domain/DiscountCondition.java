@@ -1,18 +1,24 @@
 package org.eternity.script.movie.domain;
 
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 
+@Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED) @AllArgsConstructor
 @Getter @Setter
 public class DiscountCondition {
     public enum ConditionType { PERIOD_CONDITION, SEQUENCE_CONDITION }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long policyId;
 
+    @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "varchar(20)")
     private ConditionType conditionType;
     private DayOfWeek dayOfWeek;
 
